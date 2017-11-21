@@ -1,23 +1,26 @@
 <template>
   <div class="container">
-    <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
-    <my-tunes class="row alpha my-tunes">
+    <div class="row alpha">
 
-    </my-tunes>
+      <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
+      <my-tunes class="col-md-6 my-tunes">
 
-    <itunes class="row beta itunes">
+      </my-tunes>
 
-    </itunes>
+      <itunes class="col-md-6 itunes">
+
+      </itunes>
+    </div>
   </div>
 </template>
 
 <script>
-  import ITunes from './ITunes'
+  import Itunes from './Itunes'
   import MyTunes from './MyTunes'
 
   export default {
     components: {
-      ITunes,
+      Itunes,
       MyTunes
     }
   }

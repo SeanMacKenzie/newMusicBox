@@ -6,10 +6,15 @@ var DBConnect = require('./config/mlab/mlab-config')
 var port = 3000
 
 //route variables
+var playlistRoutes = require('./routes/playlist-route')
+var songRoutes = require('./routes/song-route')
 
 //Middleware
 server.use(cors({}))
 server.use(bp.json())
+
+server.use(playlistRoutes)
+server.use(songRoutes)
 
 
 

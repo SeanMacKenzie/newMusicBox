@@ -7,11 +7,12 @@ vue.use(vuex)
 var store = new vuex.Store({
   state: {
     myTunes: [],
-    results: []
+    results: [],
+    
   },
   mutations: {
-    setResults(state, results){
-      state.results = results
+    setResults(state, data){
+      state.results = data.results
     }
   },
   actions: {
@@ -20,10 +21,22 @@ var store = new vuex.Store({
       var url2 = 'https://itunes.apple.com/search?term=' + artist;
       var apiUrl = url + encodeURIComponent(url2);
       $.get(apiUrl).then(data=>{
-        commit('setResults', data)
+        // var songList = data.results.map(function (song) {
+        //   return{
+        //     title: song.trackName,
+        //     albumArt: song.artworkUrl60,
+        //     artist: song.artistName,
+        //     album: song.collectionName,
+        //     preview: song.previewUrl
+        //   }
+        // })
+        // return songList
+        
+        console.log('Music data', JSON.parse(data))
+        commit('setResults', JSON.parse(data))
       })
     },
-    
+
     getMyTunes({commit, dispatch}){
       //this should send a get request to your server to return the list of saved tunes
     },
