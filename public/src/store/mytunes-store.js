@@ -23,6 +23,7 @@ var store = new vuex.Store({
         commit('setResults', data)
       })
     },
+    
     getMyTunes({commit, dispatch}){
       //this should send a get request to your server to return the list of saved tunes
     },
