@@ -17,7 +17,14 @@
         methods: {
             getMyTunes(){
                 this.store.dispatch('getMyTunes')
+            },
+            promoteMyTune(track, myTunes) {
+                this.$store.dispatch('promoteTrack', { tune, myTunes })
+            },
+            demoteMyTune(track, myTunes) {
+                this.$store.dispatch('demoteTrack', { track, myTunes })
             }
+
         },
         computed: {
             myTunes() {
