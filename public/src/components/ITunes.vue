@@ -5,12 +5,12 @@
             <input type="text" class="form-control" name="artist" placeholder="Artist Name" v-model="artist" />
             <button type="submit" class="btn btn-primary" id="get-music-button">Get Music</button>
         </form>
-        <div class="col-sm-12 red-border" v-for="song in results">
-            <img :src="song.artworkUrl60">
-            <h4>{{song.artistName}}</h4>
-            <h6>{{song.collectionName}}</h6>
-            <h4>{{song.trackName}}</h4>
-            <audio :src="song.previewUrl" controls="controls"></audio>
+        <div class="col-sm-12 red-border" v-for="track in results">
+            <img :src="track.artworkUrl60">
+            <h4>{{track.artistName}}</h4>
+            <h6>{{track.collectionName}}</h6>
+            <h4>{{track.trackName}}</h4>
+            <audio :src="track.previewUrl" controls="controls"></audio>
             <button @click="addToPlaylist(track, myTunes)" class="btn btn-primary" id="add-track">Add</button>
         </div>
 

@@ -16,7 +16,7 @@ var store = new vuex.Store({
     },
 
     setTunes(state, data) {
-      state.myTunes = data.myTunes
+      state.myTunes = data
     }
   },
   actions: {
@@ -36,28 +36,30 @@ var store = new vuex.Store({
       //this should send a get request to your server to return the list of saved tunes
       var baseUrl = 'http://localhost:3000/api/songs'
       $.get(baseUrl).then(data => {
-        console.log('Tunes data', JSON.parse(data))
-        commit('setTunes', JSON.parse(data))
+        console.log('Tunes data', data)
+        commit('setTunes', data)
       })
     },
     addToMyTunes({ commit, dispatch }, payload) {
-      function Song(config) {
-        this.title = config.track.trackName,
-        this.albumArt = config.track.artworkUrl60,
-        this.album = config.track.collectionName,
-        this.artist = config.track.artistName,
-        this.preview = config.track.previewUrl,
-        this.playlistId = "5a14a134ef16270498d2a71d",
-        this.playOrder = config.myTunes.length
+      var song={
+        title: payload.track.trackName,
+        artist: payload.track.artistName,
+        albumArt: payload.track.artworkUrl60,
+        album: payload.track.collectionName,
+        preview: payload.track.previewUrl,
+        playlistId: "5a14a134ef16270498d2a71d",
+        playOrder: payload.myTunes.length
       }
-      var track = new Song(payload)
+      
+      console.log(song)
       //this will post to your server adding a new track to your tunes
-      var baseUrl = 'http://localhost:3000/api/songs'
-      $.post(baseUrl).then(data => {
+      var baseUrl = '//localhost:3000/api/songs'
+     
+      $.post(baseUrl, song).then(response => {
         dispatch('getMyTunes')
       })
       .catch(err => {
-        res.status(400).send(err)
+        console.log(err)
       })
     },
 
@@ -70,7 +72,7 @@ var store = new vuex.Store({
       .then(res => {
         dispatch('getMyTunes')
       })
-      .catch(err => {
+      .fail(err => {
         res.status(400).send(err)
       })
     },
@@ -84,7 +86,7 @@ var store = new vuex.Store({
             data: { order: payload.myTunes[i].order - 1 }
           })
           .then (res => { dispatch('getMyTunes')})
-          .catch(err => {
+          .fail(err => {
             res.status(400).send(err)
           })
         }
@@ -100,7 +102,7 @@ var store = new vuex.Store({
             data: { order: payload.myTunes[i].order + 1 }
           })
           .then (res => { dispatch('getMyTunes')})
-          .catch(err => {
+          .fail(err => {
             res.status(400).send(err)
           })
         }

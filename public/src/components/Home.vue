@@ -32,12 +32,12 @@
     display: inline-block;
     min-height: 500px;
     min-width: 50%;
-    background: green;
+    background: rgb(5, 41, 36);
   }
 
   .itunes {
     display: inline-block;
-    background: red;
+    background: rgb(0, 225, 255);
     min-height: 500px;
     min-width: 45%;
   }

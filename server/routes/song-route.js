@@ -1,9 +1,17 @@
-var Song = require('../models/song')
+var Songs = require('../models/song')
+var Playlists = require('../models/playlist')
 var router = require('express').Router()
 
 router.post('/api/songs', (req, res, next) => {
-    // debugger
-    Songs.create(req.body)
+    console.log(req.body)
+    //debugger
+    Playlists.findById(req.body.playlistId)
+        .then(playlist => {
+            req.body.playlistId = playlist._id
+            
+            Songs.create(req.body)
+
+        })
         .then(song => {
             var response = {
                 data: song,
@@ -17,7 +25,7 @@ router.post('/api/songs', (req, res, next) => {
 })
 
 router.delete('api/songs/:id', (req, res) => {
-    Songs.findOneAndRemove({_id: req.params.id })
+    Songs.findOneAndRemove({ _id: req.params.id })
         .then(() => res.send({ message: 'Song gone' }))
         .catch(err => res.status(401).send(err))
 })
@@ -45,12 +53,12 @@ router.put('/api/songs/:id', (req, res, next) => {
 
 
 
-function handleResponse(action, data, error){
-    var response =  {
+function handleResponse(action, data, error) {
+    var response = {
         message: action,
         data: data
     }
-    if(error){
+    if (error) {
         response.error = error
     }
     return response

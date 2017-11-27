@@ -12,6 +12,8 @@ var songRoutes = require('./routes/song-route')
 //Middleware
 server.use(cors({}))
 server.use(bp.json())
+server.use(bp.urlencoded({ extended: true }))
+
 
 server.use(playlistRoutes)
 server.use(songRoutes)
