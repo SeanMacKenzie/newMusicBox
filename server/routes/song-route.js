@@ -24,8 +24,10 @@ router.post('/api/songs', (req, res, next) => {
         })
 })
 
-router.delete('api/songs/:id', (req, res) => {
-    Songs.findOneAndRemove({ _id: req.params.id })
+router.delete('/api/songs/:id', (req, res, next) => {
+    console.log(req)
+    debugger
+    Songs.findOneAndRemove(req.params.id)
         .then(() => res.send({ message: 'Song gone' }))
         .catch(err => res.status(401).send(err))
 })

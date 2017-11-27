@@ -40,7 +40,7 @@
                 this.$store.dispatch('demoteTrack', { track, myTunes })
             },
             removeMySong(track, myTunes) {
-                this.$store.dispatch('removeTrack', { track, myTunes })
+                this.$store.dispatch('removeTrack', track)
             }
 
         },

@@ -65,15 +65,16 @@ var store = new vuex.Store({
 
     removeTrack({ commit, dispatch }, track) {
       //Removes track from the database with delete
+      console.log(track)
       $.ajax ({
         method: "DELETE",
-        url: '//localhost:3000/api/songs' + track.song._id
+        url: '//localhost:3000/api/songs/' + track._id
       })
       .then(res => {
         dispatch('getMyTunes')
       })
       .fail(err => {
-        res.status(400).send(err)
+        console.log(err)
       })
     },
     promoteTrack({ commit, dispatch }, payload) {
