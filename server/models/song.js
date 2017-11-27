@@ -7,7 +7,8 @@ var schema = new mongoose.Schema({
     albumArt: { type: String, required: true},
     album: { type: String },
     preview: { type: String },
-    playlistId: { type: ObjectId, required: true, ref: 'Playlist' }
+    playlistId: { type: ObjectId, required: true, ref: 'Playlist' },
+    playOrder: { type: Number }
 })
 
 module.exports = mongoose.model('Song', schema)
