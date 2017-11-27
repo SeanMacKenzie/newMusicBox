@@ -42,11 +42,11 @@ var store = new vuex.Store({
     },
     addToMyTunes({ commit, dispatch }, payload) {
       function Song(config) {
-        this.title = config.result.trackName,
-        this.albumArt = config.result.artworkUrl60,
-        this.album = config.result.collectionName,
-        this.artist = config.result.artistName,
-        this.preview = config.result.previewUrl,
+        this.title = config.track.trackName,
+        this.albumArt = config.track.artworkUrl60,
+        this.album = config.track.collectionName,
+        this.artist = config.track.artistName,
+        this.preview = config.track.previewUrl,
         this.playlistId = "5a14a134ef16270498d2a71d",
         this.playOrder = config.myTunes.length
       }
@@ -74,11 +74,37 @@ var store = new vuex.Store({
         res.status(400).send(err)
       })
     },
-    promoteTrack({ commit, dispatch }, track) {
+    promoteTrack({ commit, dispatch }, payload) {
       //this should increase the position / upvotes and downvotes on the track
+      for(var i = 0; i < payload.myTunes.length; i++) {
+        if(payload.myTunes[i]._id == payload.track._id) {
+          $.ajax({
+            method: "PUT",
+            url: "//localhost:3000/api/songs" +payload.myTunes[i]._id,
+            data: { order: payload.myTunes[i].order - 1 }
+          })
+          .then (res => { dispatch('getMyTunes')})
+          .catch(err => {
+            res.status(400).send(err)
+          })
+        }
+      }
     },
-    demoteTrack({ commit, dispatch }, track) {
+    demoteTrack({ commit, dispatch }, payload) {
       //this should decrease the position / upvotes and downvotes on the track
+      for(var i = 0; i < payload.myTunes.length; i++) {
+        if (payload.myTunes[i]._id == payload.track._id) {
+          $.ajax({
+            method: "PUT",
+            url: "//localhost:3000/api/songs" + payload.myTunes[i]._id,
+            data: { order: payload.myTunes[i].order + 1 }
+          })
+          .then (res => { dispatch('getMyTunes')})
+          .catch(err => {
+            res.status(400).send(err)
+          })
+        }
+      }
     }
 
   }

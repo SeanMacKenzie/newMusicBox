@@ -11,7 +11,7 @@
             <h6>{{song.collectionName}}</h6>
             <h4>{{song.trackName}}</h4>
             <audio :src="song.previewUrl" controls="controls"></audio>
-            <button @click="addToPlaylist(result, myTunes)" class="btn btn-primary" id="add-track">Add</button>
+            <button @click="addToPlaylist(track, myTunes)" class="btn btn-primary" id="add-track">Add</button>
         </div>
 
 
@@ -23,11 +23,12 @@
 
 <script>
     export default {
-        name: 'Itunes',
+        name: 'ITunes',
         data() {
             return {
                 artist: '',
                 track: '',
+                
 
             }
         },
@@ -35,14 +36,17 @@
             getMusicByArtist() {
                 this.$store.dispatch('getMusicByArtist', this.artist)
             },
-            addToPlaylist(result, myTunes) {
-                this.$store.dispatch('addToMyTunes', { result, myTunes })
+            addToPlaylist(track, myTunes) {
+                this.$store.dispatch('addToMyTunes', { track, myTunes })
             }
 
         },
         computed: {
             results() {
                 return this.$store.state.results
+            },
+            myTunes() {
+                return this.$store.state.myTunes
             }
         }
     }

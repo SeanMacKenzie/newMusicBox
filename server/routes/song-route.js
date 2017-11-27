@@ -2,9 +2,10 @@ var Song = require('../models/song')
 var router = require('express').Router()
 
 router.post('/api/songs', (req, res, next) => {
+    // debugger
     Songs.create(req.body)
         .then(song => {
-            let response = {
+            var response = {
                 data: song,
                 message: 'Song is added to SpaceJam'
             }
