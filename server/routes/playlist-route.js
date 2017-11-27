@@ -15,12 +15,22 @@ router.post('/api/playlists', (req, res, next) => {
         })
 })
 
-function handleResponse(action, data, error){
-    var response =  {
+router.get('/api/playlists', (req, res, next) => {
+    Playlists.find({})
+        .then(playlist => {
+            res.send(playlist)
+        })
+        .catch(err => {
+            res.status(400).send({ Error: err })
+        })
+})
+
+function handleResponse(action, data, error) {
+    var response = {
         message: action,
         data: data
     }
-    if(error){
+    if (error) {
         response.error = error
     }
     return response

@@ -31,7 +31,7 @@ router.get('/api/songs', (req, res, next) => {
         })
 })
 
-router.put('/api/songss/:id', (req, res, next) => {
+router.put('/api/songs/:id', (req, res, next) => {
     var action = 'Update Songs'
     Songs.findByIdAndUpdate(req.params.id, req.body)
         .then(data => {

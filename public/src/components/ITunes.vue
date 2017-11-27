@@ -11,6 +11,7 @@
             <h6>{{song.collectionName}}</h6>
             <h4>{{song.trackName}}</h4>
             <audio :src="song.previewUrl" controls="controls"></audio>
+            <button @click="addToPlaylist" class="btn btn-primary" id="add-track">Add</button>
         </div>
         
         
@@ -43,12 +44,16 @@
         data() {
             return {
                 artist: '',
+                track: '',
 
             }
         },
         methods: {
             getMusicByArtist(){
                 this.$store.dispatch('getMusicByArtist', this.artist)
+            },
+            addToPlaylist(){
+                this.$store.dispatch('addToMyTunes', this.track)
             }
 
         },
