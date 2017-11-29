@@ -27,7 +27,7 @@ var store = new vuex.Store({
       $.get(apiUrl).then(data => {
 
 
-        console.log('Music data', JSON.parse(data))
+        
         commit('setResults', JSON.parse(data))
       })
     },
@@ -36,7 +36,7 @@ var store = new vuex.Store({
       //this should send a get request to your server to return the list of saved tunes
       var baseUrl = 'http://localhost:3000/api/songs'
       $.get(baseUrl).then(data => {
-        console.log('Tunes data', data)
+        
         commit('setTunes', data)
       })
     },
@@ -51,7 +51,7 @@ var store = new vuex.Store({
         playOrder: payload.myTunes.length
       }
 
-      console.log(song)
+      
       //this will post to your server adding a new track to your tunes
       var baseUrl = '//localhost:3000/api/songs'
 
@@ -65,7 +65,7 @@ var store = new vuex.Store({
 
     removeTrack({ commit, dispatch }, track) {
       //Removes track from the database with delete
-      console.log(track)
+      console.log('public side', track)
       $.ajax({
         method: "DELETE",
         url: '//localhost:3000/api/songs/' + track._id

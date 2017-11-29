@@ -3,12 +3,12 @@ var Playlists = require('../models/playlist')
 var router = require('express').Router()
 
 router.post('/api/songs', (req, res, next) => {
-    console.log(req.body)
+    
     //debugger
     Playlists.findById(req.body.playlistId)
         .then(playlist => {
             req.body.playlistId = playlist._id
-            
+
             Songs.create(req.body)
 
         })
@@ -25,11 +25,17 @@ router.post('/api/songs', (req, res, next) => {
 })
 
 router.delete('/api/songs/:id', (req, res, next) => {
-    console.log(req)
     
+    console.log(req)
+
     Songs.findOneAndRemove(req.params.id)
-        .then(() => res.send({ message: 'Song gone' }))
-        .catch(err => res.status(401).send(err))
+        .then(song => {
+            res.send({ message: 'Song gone' })
+        })
+        .catch(err => {
+            res.status(400).send(err)
+        })
+
 })
 
 router.get('/api/songs', (req, res, next) => {
@@ -44,7 +50,7 @@ router.get('/api/songs', (req, res, next) => {
 
 router.put('/api/songs/:id', (req, res, next) => {
     var action = 'Update Songs'
-    Songs.findByIdAndUpdate(req.params.id, req.body)
+    Songs.findByIdAndUpdate(req.params.id)
         .then(data => {
             res.send(handleResponse(action, data))
         })
