@@ -28,7 +28,7 @@ router.delete('/api/songs/:id', (req, res, next) => {
     
     console.log(req)
 
-    Songs.findOneAndRemove(req.params.id)
+    Songs.findByIdAndRemove(req.params.id)
         .then(song => {
             res.send({ message: 'Song gone' })
         })
