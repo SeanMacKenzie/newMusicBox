@@ -1,6 +1,6 @@
 <template>
     <div class="Itunes text-center">
-        <h1>Music Box</h1>
+        
         <form @submit.prevent="getMusicByArtist">
             <input type="text" class="form-control" name="artist" placeholder="Artist Name" v-model="artist" />
             <button type="submit" class="btn btn-primary" id="get-music-button">Get Music</button>

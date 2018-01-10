@@ -1,6 +1,10 @@
 <template>
   <div class="container">
     <div class="row alpha">
+      <h1>Music Box</h1>
+    </div>
+    <div class="row beta">
+
 
       <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
       <my-tunes class="col-md-6 my-tunes">

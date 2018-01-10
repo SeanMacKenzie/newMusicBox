@@ -7,8 +7,8 @@
             <h6>{{track.album}}</h6>
             <h4>{{track.title}}</h4>
             <audio :src="track.preview" controls="controls"></audio>
-            <button @click="promoteMySong(track, myTunes)" class="btn btn-primary" id="promote">Promote</button>
-            <button @click="demoteMySong(track, myTunes)" class="btn btn-caution" id="demote">Demote</button>
+            <!-- <button @click="promoteMySong(track, myTunes)" class="btn btn-primary" id="promote">Promote</button>
+            <button @click="demoteMySong(track, myTunes)" class="btn btn-caution" id="demote">Demote</button> -->
             <button @click="removeMySong(track, myTunes)" class="btn btn-danger" id="remove">Remove from list</button>
 
         </div>
