@@ -2,6 +2,9 @@ import vue from 'vue'
 import vuex from 'vuex'
 import $ from 'jquery'
 
+var production = !window.location.host.includes('localhost');
+var baseUrl = production ? '//' : '//localhost:3000';
+
 vue.use(vuex)
 
 var store = new vuex.Store({
