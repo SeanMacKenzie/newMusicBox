@@ -1,10 +1,12 @@
 <template>
     <div class="Itunes text-center">
-        
-        <form @submit.prevent="getMusicByArtist">
-            <input type="text" class="form-control" name="artist" placeholder="Artist Name" v-model="artist" />
-            <button type="submit" class="btn btn-primary" id="get-music-button">Get Music</button>
-        </form>
+        <div class="music-form">
+
+            <form @submit.prevent="getMusicByArtist">
+                <input type="text" class="form-control" name="artist" placeholder="Artist Name" v-model="artist" />
+                <button type="submit" class="btn btn-primary" id="get-music-button">Get Music</button>
+            </form>
+        </div>
         <div class="col-sm-12 red-border" v-for="track in results">
             <img :src="track.artworkUrl60">
             <h4>{{track.artistName}}</h4>
@@ -28,7 +30,7 @@
             return {
                 artist: '',
                 track: '',
-                
+
 
             }
         },
@@ -56,20 +58,27 @@
 </script>
 
 <style>
+    .music-form {
+        padding: 5%;
+        font-family: 'Sarala', sans-serif;
+        
+    }
+
+    .Itunes {
+        background-image: url(http://www.transparenttextures.com/patterns/light-sketch.png);
+        background-color: #FF153D;
+        
+    }
+    
+    .btn-primary {
+        background-color: #43414d;
+    }
+
+    .red-border {
+        font-family: 'Sarala', sans-serif;
+        border-style: outset;
+        border-width: 5px;
+        padding: 1%;
+        color: white;
+    }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

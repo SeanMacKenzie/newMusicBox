@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row alpha">
+    <div class="row alpha jumbotron">
       <h1>Music Box</h1>
     </div>
     <div class="row beta">
@@ -34,15 +34,23 @@
 <style>
   .my-tunes {
     display: inline-block;
-    min-height: 500px;
+    min-height: 10vh;
     min-width: 50%;
-    background: rgb(5, 41, 36);
+    background:white;
+  }
+
+  .jumbotron {
+    background-image: url(https://static.pexels.com/photos/96857/pexels-photo-96857.jpeg);
+    background-position: center;
+    background-size: cover;
+    color: white;
+    font-family: 'Amatic SC', cursive;
   }
 
   .itunes {
     display: inline-block;
-    background: rgb(0, 225, 255);
-    min-height: 500px;
+    background: white;
+    min-height: 10vh;
     min-width: 45%;
   }
 </style>

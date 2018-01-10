@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <home></home>
   </div>
 </template>
@@ -16,4 +16,9 @@ export default {
 </script>
 
 <style>
+  .app {
+    background-image: url(https://www.transparenttextures.com/patterns/3px-tile.png);
+    background-color: #2b2628;
+    min-height: 100vh;
+  }
 </style>
