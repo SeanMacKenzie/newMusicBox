@@ -13,7 +13,7 @@ var songRoutes = require('./routes/song-route')
 server.use(cors({}))
 server.use(bp.json())
 server.use(bp.urlencoded({ extended: true }))
-
+server.use(express.static(__dirname + '/../public'))
 
 server.use(playlistRoutes)
 server.use(songRoutes)
