@@ -1,7 +1,7 @@
 import vue from 'vue'
 import vuex from 'vuex'
 import $ from 'jquery'
-import axios from 'axios'
+
 
 var production = !window.location.host.includes('localhost');
 var baseUrl = production ? '//newmusicbox.herokuapp.com' : '//localhost:3000';
