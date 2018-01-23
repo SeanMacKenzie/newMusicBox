@@ -1,4 +1,4 @@
-var server = require('../../index.js')
+
 var mongoose = require('mongoose')
 var connectionString = "mongodb://first:testing@ds040877.mlab.com:40877/musicservice"
 var connection = mongoose.connection
@@ -14,7 +14,7 @@ mongoose.connect(connectionString, {
 connection.on('error', console.error.bind(console, 'connection error: '))
 
 connection.once('open', ()=>{
-    server.listen(3000, ()=> {
+   
         console.log("running")
-    })
+    
 })
