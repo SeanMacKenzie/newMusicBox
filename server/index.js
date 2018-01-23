@@ -22,8 +22,8 @@ app.use(songRoutes)
 
 
 
-server.listen(port, function() {
-    console.log('Trying to get it done on port: ', port)
+server.listen(process.env.PORT || port, () => {
+    console.log("Server listening on port: ", port)
 })
 
 module.exports = server
