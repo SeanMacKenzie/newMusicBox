@@ -2,7 +2,7 @@ var express = require('express')
 var cors = require('cors')
 var app= express()
 var bp = require('body-parser')
-var DBConnect = require('./config/mlab/mlab-config')
+var dbConnect = require('./config/mlab/mlab-config')
 var port = 3000
 var server = require('http').createServer(app)
 
